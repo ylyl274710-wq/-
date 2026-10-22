@@ -1,0 +1,12 @@
+.git
+.local
+.verification
+.staging
+.vercel
+node_modules
+dist
+*.zip
+SOURCE_CODE.md
+.env
+.env.*
+!.env.example

@@ -1,0 +1,4 @@
+import type { SavedSession } from '../src/lib/studioTypes';
+import { generatePaperGeometry } from '../src/lib/paperGeometry';
+import { initialPaperGame } from '../src/lib/paperReducer';
+export function fixture(): SavedSession { return { version: 1, id: 'fixture', image: { blob: new Blob([Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jB1kAAAAASUVORK5CYII='), c => c.charCodeAt(0))], { type: 'image/png' }), name: 'test.png', originalWidth: 1, originalHeight: 1 }, settings: { shape: 'circle', pieceCount: 9, customOutline: [] }, state: initialPaperGame(generatePaperGeometry({ shape: 'circle', pieceCount: 9, customOutline: [] }, 30)), hardMode: false, context: { kind: 'custom', title: '给朋友的测试拼图' }, savedAt: 0, options: { mode: 'mystery', gift: { title: '一份礼物', to: '朋友', from: '测试', message: '拼完见', keywords: '光、纸、回忆' } } }; }

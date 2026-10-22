@@ -1,0 +1,153 @@
+{
+  "source": "Art Institute of Chicago",
+  "verifiedOn": "2026-10-19",
+  "policy": "https://www.artic.edu/image-licensing",
+  "apiDocumentation": "https://api.artic.edu/docs/",
+  "thumbnails": "400px centered square WebP derivatives",
+  "works": [
+    {
+      "id": 28560,
+      "title": "The Bedroom",
+      "titleZh": "阿尔的卧室",
+      "artist": "Vincent van Gogh",
+      "date": "1889",
+      "isPublicDomain": true,
+      "sourcePage": "https://www.artic.edu/artworks/28560",
+      "metadataUrl": "https://api.artic.edu/api/v1/artworks/28560",
+      "imageId": "6644829f-f292-c5c4-a73c-0356a6fdbf0d",
+      "imageSource": "https://www.artic.edu/iiif/2/6644829f-f292-c5c4-a73c-0356a6fdbf0d/full/1686,/0/default.jpg",
+      "files": [
+        {
+          "name": "bedroom.jpg",
+          "bytes": 932823,
+          "sha256": "7b0cb3c2514181a95a15706c5863bf6a9602d52d7d844259475a98434d0ae556"
+        },
+        {
+          "name": "bedroom-thumb.webp",
+          "bytes": 32690,
+          "sha256": "bfb5c5b9e040cbf72dca3ee60092387da1586e883024e4fea55afa1752814fad"
+        }
+      ]
+    },
+    {
+      "id": 24645,
+      "title": "Under the Wave off Kanagawa (Kanagawa oki nami ura), also known as The Great Wave, from the series \"Thirty-Six Views of Mount Fuji (Fugaku sanjūrokkei)\"",
+      "titleZh": "神奈川冲浪里",
+      "artist": "Katsushika Hokusai",
+      "date": "1830/33",
+      "isPublicDomain": true,
+      "sourcePage": "https://www.artic.edu/artworks/24645",
+      "metadataUrl": "https://api.artic.edu/api/v1/artworks/24645",
+      "imageId": "b3974542-b9b4-7568-fc4b-966738f61d78",
+      "imageSource": "https://www.artic.edu/iiif/2/b3974542-b9b4-7568-fc4b-966738f61d78/full/1686,/0/default.jpg",
+      "files": [
+        {
+          "name": "great-wave.jpg",
+          "bytes": 872279,
+          "sha256": "22020dce06855ab7df4e45fe33e350c9e7c679491beeab3bb900c1bdd7308b93"
+        },
+        {
+          "name": "great-wave-thumb.webp",
+          "bytes": 41694,
+          "sha256": "5b049fe8b7ed98b64ed76466079faa6c123df2c2f3d4849550ed2148cb11fe37"
+        }
+      ]
+    },
+    {
+      "id": 20684,
+      "title": "Paris Street; Rainy Day",
+      "titleZh": "雨天的巴黎街道",
+      "artist": "Gustave Caillebotte",
+      "date": "1877",
+      "isPublicDomain": true,
+      "sourcePage": "https://www.artic.edu/artworks/20684",
+      "metadataUrl": "https://api.artic.edu/api/v1/artworks/20684",
+      "imageId": "f8fd76e9-c396-5678-36ed-6a348c904d27",
+      "imageSource": "https://www.artic.edu/iiif/2/f8fd76e9-c396-5678-36ed-6a348c904d27/full/1686,/0/default.jpg",
+      "files": [
+        {
+          "name": "paris-rain.jpg",
+          "bytes": 658998,
+          "sha256": "2b5b34eeee43dbc6d08b4f0ed4c17c2577b29a3809aa0761781531b1ee7a3952"
+        },
+        {
+          "name": "paris-rain-thumb.webp",
+          "bytes": 22160,
+          "sha256": "58f24b3fcdf1f18831b665f8edc89e3cd605d0465b71966848f9f40bef37a093"
+        }
+      ]
+    },
+    {
+      "id": 81537,
+      "title": "Bordighera",
+      "titleZh": "博尔迪盖拉",
+      "artist": "Claude Monet",
+      "date": "1884",
+      "isPublicDomain": true,
+      "sourcePage": "https://www.artic.edu/artworks/81537",
+      "metadataUrl": "https://api.artic.edu/api/v1/artworks/81537",
+      "imageId": "4d1b3ad0-14db-0d21-ad9f-17abb8bdfbb5",
+      "imageSource": "https://www.artic.edu/iiif/2/4d1b3ad0-14db-0d21-ad9f-17abb8bdfbb5/full/1686,/0/default.jpg",
+      "files": [
+        {
+          "name": "bordighera.jpg",
+          "bytes": 1130374,
+          "sha256": "b825b310e35fca296a3003149c3ac6f9f17b3f54f737ad161bfc1ff48fd0829f"
+        },
+        {
+          "name": "bordighera-thumb.webp",
+          "bytes": 54170,
+          "sha256": "363bab6eb088f8aab099a031562f8ca390f5b1527af18a7c3006eea133ca8451"
+        }
+      ]
+    },
+    {
+      "id": 27992,
+      "title": "A Sunday on La Grande Jatte — 1884",
+      "titleZh": "大碗岛的星期天下午",
+      "artist": "Georges Seurat",
+      "date": "1884–86, border added 1888–89",
+      "isPublicDomain": true,
+      "sourcePage": "https://www.artic.edu/artworks/27992",
+      "metadataUrl": "https://api.artic.edu/api/v1/artworks/27992",
+      "imageId": "2d484387-2509-5e8e-2c43-22f9981972eb",
+      "imageSource": "https://www.artic.edu/iiif/2/2d484387-2509-5e8e-2c43-22f9981972eb/full/1686,/0/default.jpg",
+      "files": [
+        {
+          "name": "grande-jatte.jpg",
+          "bytes": 849983,
+          "sha256": "14a893bee0c73c9bae05508c1901e2cdf7940d4686988d17360d098dff561d7f"
+        },
+        {
+          "name": "grande-jatte-thumb.webp",
+          "bytes": 27540,
+          "sha256": "bdd9accd411362f399cffcc14793edf2566f361742500f38d695dd1c5d12631d"
+        }
+      ]
+    },
+    {
+      "id": 16568,
+      "title": "Water Lilies",
+      "titleZh": "睡莲",
+      "artist": "Claude Monet",
+      "date": "1906",
+      "isPublicDomain": true,
+      "sourcePage": "https://www.artic.edu/artworks/16568",
+      "metadataUrl": "https://api.artic.edu/api/v1/artworks/16568",
+      "imageId": "3c27b499-af56-f0d5-93b5-a7f2f1ad5813",
+      "imageSource": "https://www.artic.edu/iiif/2/3c27b499-af56-f0d5-93b5-a7f2f1ad5813/full/1686,/0/default.jpg",
+      "files": [
+        {
+          "name": "water-lilies.jpg",
+          "bytes": 1165558,
+          "sha256": "bab7cc062608fdb0601f3bb43f927eb20516525755a0a519f5f40fb301fe0074"
+        },
+        {
+          "name": "water-lilies-thumb.webp",
+          "bytes": 31522,
+          "sha256": "182d65d3508bc8644a860c610612e0a035c62918d449fce1305f9358b6fa8399"
+        }
+      ]
+    }
+  ]
+}

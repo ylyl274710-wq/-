@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+.verification/
+.local/
+.vercel/
+.env
+.env.*
+!.env.example
+piece-by-piece.zip
+SOURCE_CODE.md

@@ -1,0 +1,27 @@
+# 待审核的付费部署方案；应用此 Blueprint 会产生服务及磁盘费用。
+services:
+  - type: web
+    name: piece-by-piece-api
+    runtime: node
+    region: singapore
+    plan: 0.5c-512mb
+    numInstances: 1
+    autoDeployTrigger: off
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm run server
+    healthCheckPath: /api/health
+    disk:
+      name: puzzle-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: STUDIO_DATA_DIR
+        value: /var/data/puzzle
+      - key: PUBLIC_ORIGIN
+        sync: false
