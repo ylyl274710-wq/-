@@ -4,11 +4,17 @@ React 18 + 严格 TypeScript + Vite + Tailwind CSS。原生 Pointer Events、Can
 
 ## 个人体验版
 
-当前Vercel配置优先发布无需后端的个人体验版，运行 `npm run build:personal`。单人、闯关、音乐、本地收藏及导出保留，云端入口在该构建中收起；本地开发完整功能不变。具体范围和验收见 [个人体验版发布记录](PERSONAL_RELEASE.md)。
+个人体验版已发布到 https://piece-by-piece-puzzle.pages.dev/ ，使用 Cloudflare Pages 免费静态托管，运行 `npm run build:personal` 构建。单人、闯关、音乐、本地收藏及导出保留，云端入口在该构建中收起；本地开发完整功能不变。具体范围和验收见 [个人体验版发布记录](PERSONAL_RELEASE.md)。
 
 ## 公网部署
 
-完整功能采用Vercel前端加独立持久化Node后端。部署配置已准备，尚未发布；需要连接云账户并确认后端费用。具体参数、发布顺序与验收见 [部署说明](DEPLOYMENT.md)。
+当前公网为 Cloudflare Pages 个人体验版，图片在浏览器本地处理。完整功能的 Vercel 前端与独立 Node 后端方案暂缓，联机与照片云分享尚未上线。具体参数、发布顺序与验收见 [部署说明](DEPLOYMENT.md)。
+
+## 两张照片，一段回忆（2026-10-23）
+
+首页新增独立的回忆制作入口 `#memory`：上传两张照片，选择并肩/上下排列与撕纸/柔和交界，调整构图，添加标题、留言和日期，再打散为一张完整的回忆拼图。支持保存1600px合成画、完成收藏与重玩，照片始终在浏览器本地处理。完整说明和验收见 [回忆拼图说明](MEMORY_MODE.md)。
+
+开发前完整版本已先备份到 GitHub 的 `backup-before-memory-20261022` 标签。新功能构建与60项测试通过。
 
 ## 运行
 
@@ -26,7 +32,7 @@ npm run build
 npm run preview
 ```
 
-`dist/` 可静态部署单人游戏；照片链接与实时联机还需运行Node服务。当前仅在本机运行，127.0.0.1链接不能让远程朋友访问。部署与数据说明见 [创意体验与联机服务](CREATIVE_FEATURES.md)。`piece-by-piece.zip` 包含源码、素材、测试、文档和构建，不含 node_modules 或用户照片；`SOURCE_CODE.md` 提供逐文件完整文本源码，二进制素材在压缩包 public 目录中。
+`dist/` 可静态部署单人游戏；照片链接与实时联机还需运行Node服务。127.0.0.1 链接只适用于本机；远程朋友可访问上方 Cloudflare Pages 个人体验版地址。部署与数据说明见 [创意体验与联机服务](CREATIVE_FEATURES.md)。`piece-by-piece.zip` 包含源码、素材、测试、文档和构建，不含 node_modules 或用户照片；`SOURCE_CODE.md` 提供逐文件完整文本源码，二进制素材在压缩包 public 目录中。
 
 ## 最新产品体验（2026-10-21）
 

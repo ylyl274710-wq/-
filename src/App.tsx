@@ -32,6 +32,7 @@ import './styles/studio.css';
 import './styles/creative.css';
 import './styles/modes.css';
 import './styles/product.css';
+import './styles/memory.css';
 
 const loaders = {
   custom: () => import('./components/CustomPage'),
@@ -48,10 +49,11 @@ const CollectionPage = lazy(() => import('./components/CollectionPage'));
 const ExperienceHub = lazy(() => import('./components/ExperienceHub'));
 const OnlineRoomPage = lazy(() => import('./components/OnlineRoomPage'));
 const GiftComposer = lazy(() => import('./components/GiftComposer'));
+const MemoryComposer = lazy(() => import('./components/MemoryComposer'));
 const preload = (mode: 'custom' | 'together' | 'campaign') => { void loaders[mode]().catch(() => {}); };
 
-type Page = 'home' | 'custom' | 'together' | 'campaign' | 'explore' | 'collection' | 'shredding' | 'game' | 'creative' | 'online' | 'gift';
-const PAGE_HASHES: Partial<Record<Page, string>> = { home: '', custom: '#custom', together: '#together', campaign: '#campaign', explore: '#explore', collection: '#collection', creative: '#creative', gift: '#gift' };
+type Page = 'home' | 'memory' | 'custom' | 'together' | 'campaign' | 'explore' | 'collection' | 'shredding' | 'game' | 'creative' | 'online' | 'gift';
+const PAGE_HASHES: Partial<Record<Page, string>> = { home: '', memory: '#memory', custom: '#custom', together: '#together', campaign: '#campaign', explore: '#explore', collection: '#collection', creative: '#creative', gift: '#gift' };
 interface NewGamePlan { image: PuzzleImage; run: ActiveRun; animate: boolean }
 
 export default function App() {
@@ -235,7 +237,7 @@ export default function App() {
     const id = savedRef.current?.id;
     void clearSession(id).then(() => { if (savedRef.current?.id === id) { savedRef.current = null; setSaved(null); } }).catch(storageError);
   }
-  function replayEntry(entry: CollectionEntry) { const restored = renewImageResource({ ...entry.image, url: '' }); begin(restored, entry.settings, { kind: 'custom', title: entry.context.title ?? entry.image.name }, entry.state.geometry.seed, false, safeOptions(entry.options)); }
+  function replayEntry(entry: CollectionEntry) { const restored = renewImageResource({ ...entry.image, url: '' }); begin(restored, entry.settings, { kind: 'custom', title: entry.context.title ?? entry.image.name, ...(entry.context.memory ? { memory: true } : {}) }, entry.state.geometry.seed, false, safeOptions(entry.options)); }
   function enterExperience(s: SavedSession) {
     const restored = renewImageResource({ ...s.image, url: '' }); setIncoming(null);
     const fresh = s.state.moves === 0 && s.state.elapsedMs === 0 && !s.state.placed.length && !s.state.loose.length;
@@ -276,7 +278,8 @@ export default function App() {
     <button className="skip-to-content" onClick={() => { const main = document.querySelector('main'); if (main) { main.tabIndex = -1; main.focus({ preventScroll: true }); } }}>跳到主要内容</button>
     <Header onHome={() => navigate('home')} />
     <Suspense fallback={<PageLoading />}>
-    {page === 'home' && <HomePage onIntent={preload} onCustom={() => navigate('custom')} onCampaign={() => navigate('campaign')} onTogether={() => navigate('together')} onCollection={() => navigate('collection')} onResume={resume} saved={saved} busy={busy} onRelax={() => playGentle()} onGift={() => openGift()} />}
+    {page === 'home' && <HomePage onMemory={() => navigate('memory')} onIntent={preload} onCustom={() => navigate('custom')} onCampaign={() => navigate('campaign')} onTogether={() => navigate('together')} onCollection={() => navigate('collection')} onResume={resume} saved={saved} busy={busy} onRelax={() => playGentle()} onGift={() => openGift()} />}
+    {page === 'memory' && <MemoryComposer onBack={() => navigate('home')} onError={notify} onStart={(next, pieces) => begin(next, { pieceCount: pieces, shape: 'square', customOutline: [] }, { kind: 'custom', title: next.name, memory: true }, undefined, true, { mode: 'classic', relaxed: true })} />}
     {page === 'gift' && <GiftComposer image={image} artworkId={artworkId} settings={giftSettings} draft={draft} busy={busy} onFile={file => void loadHome(file)} onBuiltin={id => void selectBuiltin(id)} onSettings={setGiftSettings} onDraft={updateGiftDraft} onPreview={enterExperience} onBack={() => navigate('together')} onShares={() => openCreative('shares')} onError={notify} />}
     {page === 'custom' && <CustomPage image={image} settings={settings} busy={busy} onFile={file => void loadHome(file)} onSample={() => void loadHome()} onError={notify} onSettings={setSettings} onStart={startCustom}
       saved={saved} storage={storage} onResume={resume} onClearSave={clearSaved} onCrop={() => setCropOpen(true)} onBack={() => navigate('home')} onQuick={playQuick} />}
@@ -290,7 +293,7 @@ export default function App() {
     {page === 'game' && gameImage && run && <PaperGamePage key={run.id} image={gameImage} settings={run.settings} run={run} storage={storage} onSave={saveSession} onCompleteEntry={completeEntry} onCollection={() => navigate('collection')} onError={notify}
       onGift={PERSONAL_ONLY ? undefined : () => openGift(run.options?.gift && !run.options.weekly && !run.options.giftPreview ? run.options.gift : undefined)} gentle={run.options?.gentle ? { title: gentle.title, completed: gentleCount, total: gentle.items.length, onNext: () => playGentle() } : undefined}
       onRoom={enterRoom} theme={weekly ? { title: weeklyStory(weekly.week).title, index: weekly.index, total: 3, busy, onNext: () => playWeekly(weekly.index + 1) } : activeTheme ? { title: activeTheme.title, index: run.context.levelIndex ?? 0, total: activeTheme.ids.length, busy, onNext: () => playTheme(activeTheme.id, (run.context.levelIndex ?? 0) + 1) } : undefined}
-      onChange={() => run.options?.giftPreview ? navigate('gift') : run.context.kind === 'weekly' ? openCreative('weekly') : navigate(run.options?.relaxed || run.options?.gift ? 'home' : run.context.kind === 'campaign' ? 'campaign' : run.context.kind === 'daily' || run.context.kind === 'theme' ? 'explore' : 'custom')}
+      onChange={() => run.context.memory ? navigate('memory') : run.options?.giftPreview ? navigate('gift') : run.context.kind === 'weekly' ? openCreative('weekly') : navigate(run.options?.relaxed || run.options?.gift ? 'home' : run.context.kind === 'campaign' ? 'campaign' : run.context.kind === 'daily' || run.context.kind === 'theme' ? 'explore' : 'custom')}
       campaign={activeLevel && campaignIndex !== undefined ? { level: activeLevel, index: campaignIndex, busy, error: null, onComplete: () => {}, onNext: () => playCampaign(campaignIndex + 1) } : undefined} />}
     {cropOpen && image && <CropEditor image={image} settings={settings} onClose={() => setCropOpen(false)} onApply={next => { adoptHome(next); setCropOpen(false); notify('构图已保存，原照片仍保留'); }} />}
     {pendingStart && saved && <StudioDialog title="要替换上次未完成的拼图吗？" onClose={cancelNewGame}><p className="studio-muted">当前只有一个续玩位置。开始新局会替换下方进度，已完成的收藏不会受影响。</p><div className="save-conflict-summary"><strong>{saved.context.title ?? saved.image.name}</strong><span>{saved.settings.pieceCount}片 · 已归位 {saved.state.placed.length}片 · {saved.state.moves}次放置</span></div><div className="studio-dialog-actions"><button className="secondary-button" onClick={cancelNewGame}>取消，保留进度</button><button className="secondary-button" onClick={resume}>继续上次拼图</button><button className="primary-button" onClick={() => { const plan = pendingRef.current; if (plan) { request.current++; commitGame(plan); } }}>开始新局并替换存档</button></div></StudioDialog>}

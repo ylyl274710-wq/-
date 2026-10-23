@@ -35,3 +35,9 @@ npm run build:personal
 
 执行 npm run build:personal，压缩 dist 中的内容，确保 ZIP 根目录直接包含 index.html。进入 Cloudflare 的 Workers & Pages → piece-by-piece-puzzle，创建新的生产部署并上传。当前为直接上传项目，更新代码不会自动发布。
 
+
+## 双照片回忆拼图更新
+
+原项目已先完整备份到 GitHub `backup-before-memory-20261022` 标签（提交 `96dee90bd853cce0516879d779e998913fb5d0a1`），之后开发「两张照片，一段回忆」。Cloudflare Pages 已成功更新生产部署，36 个静态文件上传完成，访问 https://piece-by-piece-puzzle.pages.dev/#memory 可进入新玩法，首页也增加了独立入口。原有个人版范围保持不变，未开启后端或付费服务。
+
+已验证生产新页面加载正常且没有控制台错误。本地实测两张本地照片合成、两种排列、两种交界、日期和文字、9 片完整拼好、下载回忆原图和收藏墙。60 项测试通过。具体实现与验收见 [双照片回忆拼图](MEMORY_MODE.md)。

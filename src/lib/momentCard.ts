@@ -2,6 +2,7 @@ import type { CollectionEntry } from './studioTypes';
 import { dateKey } from './catalog';
 
 export function momentCaption(entry: CollectionEntry): string {
+  if (entry.context.memory) return '两张照片，一段回忆。把想留下的瞬间，慢慢拼在一起。';
   if (entry.options?.gift && !entry.options.weekly) return '有人把一份心意藏进纸片里。今天，被我一片片拼开了。';
   if (entry.options?.duo) return '一人一片，把零散拼成我们一起完成的小事。';
   return entry.options?.relaxed ? '今天，把几分钟留给自己。慢慢拼好一张图，也留住这一刻。' : '把零散，拼回喜欢的样子。今天的小小完成，值得留一张纪念。';

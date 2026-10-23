@@ -9,7 +9,7 @@
     "build": "tsc --noEmit && vite build",
     "build:personal": "node scripts/build-personal.mjs",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "tsx --test tests/game.test.ts tests/paper.test.ts tests/experiences.test.ts tests/optimization.test.ts tests/product.test.ts tests/deployment.test.ts tests/staticFiles.test.ts tests/server.test.ts",
+    "test": "tsx --test tests/memory.test.ts tests/game.test.ts tests/paper.test.ts tests/experiences.test.ts tests/optimization.test.ts tests/product.test.ts tests/deployment.test.ts tests/staticFiles.test.ts tests/server.test.ts",
     "server": "tsx server/index.ts"
   },
   "dependencies": {

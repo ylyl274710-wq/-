@@ -7,7 +7,7 @@ import { dateKey } from '../lib/catalog';
 import StudioDialog from './StudioDialog';
 
 export default function MomentStudio({ entry, onClose }: { entry: CollectionEntry; onClose: () => void }) {
-  const [options, setOptions] = useState<MomentCardOptions>({ title: entry.options?.gift && !entry.options.weekly ? entry.options.gift.title : '把零散，拼回喜欢的样子。', caption: momentCaption(entry), palette: 'cream' });
+  const [options, setOptions] = useState<MomentCardOptions>({ title: entry.context.memory ? entry.context.title ?? '两张照片，一段回忆' : entry.options?.gift && !entry.options.weekly ? entry.options.gift.title : '把零散，拼回喜欢的样子。', caption: momentCaption(entry), palette: 'cream' });
   const [blob, setBlob] = useState<Blob | null>(null), [url, setUrl] = useState(''), [message, setMessage] = useState(''), [generating, setGenerating] = useState(true), [sharing, setSharing] = useState(false);
   useEffect(() => {
     let active = true; setGenerating(true);

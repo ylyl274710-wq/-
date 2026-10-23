@@ -3,13 +3,13 @@ import { PERSONAL_ONLY } from '../lib/siteMode';
 import type { SavedSession } from '../lib/studioTypes';
 
 interface Props {
-  onCustom: () => void; onCampaign: () => void; onTogether: () => void;
+  onMemory: () => void; onCustom: () => void; onCampaign: () => void; onTogether: () => void;
   onCollection: () => void; onResume: () => void; saved: SavedSession | null;
   onIntent: (mode: 'custom' | 'campaign' | 'together') => void;
   busy: boolean; onRelax: () => void; onGift: () => void;
 }
 
-export default function HomePage({ onCustom, onCampaign, onTogether, onCollection, onResume, saved, onIntent, busy, onRelax, onGift }: Props) {
+export default function HomePage({ onMemory, onCustom, onCampaign, onTogether, onCollection, onResume, saved, onIntent, busy, onRelax, onGift }: Props) {
   return <main className="mode-home growth-home">
     <section className="mode-home-intro">
       <p className="eyebrow"><span /> A LITTLE TIME, PIECE BY PIECE</p>
@@ -31,6 +31,7 @@ export default function HomePage({ onCustom, onCampaign, onTogether, onCollectio
         <div className="mode-card-copy"><span className="mode-number">{PERSONAL_ONLY ? '03 / LITTLE MOMENTS' : '03 / BETTER TOGETHER'}</span><h2>{PERSONAL_ONLY ? '收藏时光' : '一起拼'}</h2><p>{PERSONAL_ONLY ? '每一幅拼好的照片，都值得好好收藏。' : '送一份照片礼物，或邀请朋友同桌拼。'}</p><span className="mode-card-cta">{PERSONAL_ONLY ? '看看我的作品' : '把心意拼给你'} <Icon name="arrow" width="17" height="17" /></span></div>
       </button>
     </section>
+    <button className="home-memory-link" onClick={onMemory}><span className="memory-mini-art" aria-hidden="true">▱ ♡ ▱</span><span><strong>两张照片，一段回忆</strong><small>把两个瞬间，拼在同一幅画里。</small></span><Icon name="arrow" width="18" height="18" /></button>
     <div className={`mode-home-bottom${saved ? ' has-saved-game' : ''}`}>{saved ? <button className="home-resume-link" onClick={onResume}><span className="resume-dot" /><span className="resume-copy"><strong>继续上次的拼图</strong><small>{saved.context.title ?? saved.image.name} · {saved.state.placed.length} / {saved.settings.pieceCount} 片</small><progress value={saved.state.placed.length} max={saved.settings.pieceCount} aria-label="上次拼图完成进度" /></span><span className="resume-arrow" aria-hidden="true">↗</span></button> : <span className="mode-home-note">不赶时间，选一种喜欢的方式。</span>}<button className="text-button" onClick={onCollection}>我的收藏 ↗</button></div>
   </main>;
 }
